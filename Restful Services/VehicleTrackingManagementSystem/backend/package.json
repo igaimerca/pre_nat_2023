@@ -1,0 +1,35 @@
+{
+  "name": "express_boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "author": "igaimerca",
+  "main": "server.js",
+    "scripts": {
+        "dev": "nodemon",
+        "start": "node server.js",
+        "test": "jest --detectOpenHandles --coverage"
+    },
+    "keywords": [
+        "nodejs",
+        "express",
+        "rest",
+        "api",
+        "mongodb"
+    ],
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.1",
+        "express": "^4.17.1",
+        "joi": "^17.6.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.8.10",
+        "mongoose-paginate-v2": "^1.7.0",
+        "nodemon": "^2.0.15",
+        "rwandan-plate-number": "^0.0.3",
+        "swagger-jsdoc": "^6.2.1",
+        "swagger-ui-express": "^4.4.0",
+        "uuid": "^8.3.2"
+    }
+}
