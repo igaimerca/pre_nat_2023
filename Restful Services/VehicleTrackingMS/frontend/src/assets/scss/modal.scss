@@ -15,14 +15,14 @@
     font-weight: 600;
     font-size: 24px;
     line-height: 33px;
-    color: #1679a8;
+    @apply text-secondary;
   }
   .copyRegNumber {
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 15px;
-    color: #1679a8;
+    @apply text-secondary;
     padding: 5px;
     background: #d9d9d9;
     border-radius: 6px;
@@ -61,7 +61,7 @@
     background-color: white;
   }
   .modal-footer button {
-    background: #28a4e2;
+    @apply bg-primary;
     color: white;
     border-radius: 4px;
     width: 191px;

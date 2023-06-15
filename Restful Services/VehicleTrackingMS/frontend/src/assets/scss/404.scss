@@ -9,24 +9,18 @@
 
   .margin {
     margin-bottom: 30px;
+
     &.long {
       margin-bottom: 60px;
     }
   }
+
   .flex {
     height: 100vh;
     margin-bottom: 0px;
   }
+
   .back {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 28px;
-    line-height: 33px;
-    /* identical to box height */
-
-    text-decoration-line: underline;
-
-    color: #1679a8;
+    @apply text-secondary underline font-normal text-[28px] leading-[33px];
   }
 }

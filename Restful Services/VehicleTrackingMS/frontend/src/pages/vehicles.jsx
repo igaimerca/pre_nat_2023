@@ -144,7 +144,7 @@ function Vehicles() {
               <table>
                 <thead>
                   <tr
-                    className="flex flex-col table-row mb-0 mb-2 rounded-none rounded-l-lg  flex-no wrap"
+                    className="flex-col table-row mb-2 rounded-none rounded-l-lg flex-no wrap"
                   >
                     <th>Model name</th>
                     <th>Chasis Number</th>
@@ -154,26 +154,26 @@ function Vehicles() {
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody className="sm:flex-1 sm:flex-none">
+                <tbody className="sm:flex-none">
                   {vehicles.map((doc) => (
                     <tr
                       key={doc._id}
-                      className=" sm:flex sm:flex-col sm:flex-no sm:wrap sm:table-row sm:mb-2 sm:mb-0 main-header sm:header tr"
+                      className="sm:flex-col sm:flex-no sm:wrap sm:table-row sm:mb-0 main-header sm:header tr"
                     >
-                      <td className="p-3 pt-1">
+                      <td className="p-3">
                         <div className="flex">
                           <div></div>
                           <div>{doc?.modelName}</div>
                         </div>
                       </td>
-                      <td className="p-3 pt-1">
+                      <td className="p-3">
                         {" "}
                         <div className="">{doc?.chasisNumber}</div>
                       </td>
-                      <td className="p-3 pt-1">{doc?.manufactureCompany}</td>
-                      <td className="p-3 pt-1">{doc?.price}</td>
-                      <td className="p-3 pt-1">{doc?.manufactureYear}</td>
-                      <td className="p-3 pt-1">
+                      <td className="p-3">{doc?.manufactureCompany}</td>
+                      <td className="p-3">{doc?.price}</td>
+                      <td className="p-3">{doc?.manufactureYear}</td>
+                      <td className="p-3">
                         <div className="flex">
                           <div
                             onClick={() => {

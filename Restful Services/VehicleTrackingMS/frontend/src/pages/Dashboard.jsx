@@ -131,7 +131,7 @@ function VehicleCarOwners() {
           <div className="w-full">
             <div className="md:flex">
               <div>
-                <button onClick={toggleModal} className="flex requestRegNum">
+                <button onClick={toggleModal} className="flex w-auto requestRegNum">
                   <div>
                     <svg
                       width="24"
@@ -167,7 +167,7 @@ function VehicleCarOwners() {
             <div className="table w-full">
               <table>
                 <thead>
-                  <tr className="flex flex-col table-row mb-0 mb-2 rounded-none rounded-l-lg flex-no wrap">
+                  <tr className="flex-col table-row mb-2 rounded-none rounded-l-lg flex-no wrap">
                     <th>User Names</th>
                     <th>Vehicle Model</th>
                     <th>Price(RWF)</th>
@@ -176,32 +176,32 @@ function VehicleCarOwners() {
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody className="sm:flex-1 sm:flex-none">
+                <tbody className="sm:flex-none">
                   {vehicleCarOwners.map((doc) => (
                     <tr
                       key={doc._id}
-                      className=" sm:flex sm:flex-col sm:flex-no sm:wrap sm:table-row sm:mb-2 sm:mb-0 main-header sm:header tr"
+                      className="sm:flex-col sm:flex-no sm:wrap sm:table-row sm:mb-0 main-header sm:header tr"
                     >
-                      <td className="p-3 pt-1">
-                        <div className="flex">
+                      <td className="p-3">
+                        <div className="flex items-center">
                           <div></div>
                           <div>{doc?.carOwner.names}</div>
                         </div>
                       </td>
-                      <td className="p-3 pt-1">
+                      <td className="p-3">
                         {" "}
                         <div className="">{doc?.vehicle.modelName}</div>
                       </td>
-                      <td className="p-3 pt-1">{doc?.vehicle.price}</td>
-                      <td className="p-3 pt-1">{doc?.vehiclePlateNumber}</td>
-                      <td className="p-3 pt-1">
+                      <td className="p-3">{doc?.vehicle.price}</td>
+                      <td className="p-3">{doc?.vehiclePlateNumber}</td>
+                      <td className="p-3">
                         {((date) => {
                           return `${date.getDate()}/${
                             date.getMonth() + 1
                           }/${date.getFullYear()}`;
                         })(new Date(doc?.createdAt))}
                       </td>
-                      <td className="p-3 pt-1">
+                      <td className="p-3">
                         <div className="flex">
                           <div
                             onClick={() => {

@@ -16,7 +16,7 @@ const Modal = forwardRef((props, ref) => {
               className="relative w-auto mx-auto my-6 rounded bg-main"
               style={{ width: props.width, maxWidth: "100vw" }}
             >
-              <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
+              <div className="relative flex flex-col w-full px-3 bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
                 <div className="modal">{props.children}</div>
               </div>
             </div>

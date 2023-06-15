@@ -142,7 +142,7 @@ function CarOwners() {
             <div className="table w-full">
               <table>
                 <thead>
-                  <tr className="flex flex-col table-row mb-0 mb-2 rounded-none rounded-l-lg flex-no wrap">
+                  <tr className="flex-col table-row mb-2 rounded-none rounded-l-lg flex-no wrap">
                     <th>Names</th>
                     <th>Phone number</th>
                     <th>Address</th>
@@ -150,27 +150,27 @@ function CarOwners() {
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody className="sm:flex-1 sm:flex-none">
+                <tbody className="sm:flex-none">
                   {carOwners.map((doc) => (
                     <tr
                       key={doc._id}
-                      className=" sm:flex sm:flex-col sm:flex-no sm:wrap sm:table-row sm:mb-2 sm:mb-0 main-header sm:header tr"
+                      className="sm:flex-col sm:flex-no sm:wrap sm:table-row sm:mb-0 main-header sm:header tr"
                     >
-                      <td className="p-3 pt-1">
+                      <td className="p-3">
                         <div className="flex">
                           <div></div>
                           <div>{doc?.names}</div>
                         </div>
                       </td>
-                      <td className="p-3 pt-1">
+                      <td className="p-3">
                         {" "}
                         <div className="">{doc?.phone}</div>
                       </td>
-                      <td className="p-3 pt-1">
+                      <td className="p-3">
                         <div className="">{doc?.address}</div>
                       </td>
-                      <td className="p-3 pt-1">{doc?.nationalId}</td>
-                      <td className="p-3 pt-1">
+                      <td className="p-3">{doc?.nationalId}</td>
+                      <td className="p-3">
                         <div className="flex">
                           <div
                             onClick={() => {
