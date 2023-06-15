@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import rw.aime.ne.models.Blog;
+import rw.aime.ne.payload.ApiResponse;
+import rw.aime.ne.payload.ErrorResponse;
 import rw.aime.ne.repositories.BlogRepository;
 
 import javax.swing.text.html.Option;
@@ -21,7 +23,7 @@ public class BlogController {
     BlogRepository blogRepository;
 
     @GetMapping("")
-    public ResponseEntity<List<Blog>> getAllBlogs(@RequestParam(required = false) String title) {
+    public ResponseEntity<ApiResponse> getAllBlogs(@RequestParam(required = false) String title) {
         try {
             List<Blog> blogs = new ArrayList<Blog>();
             if (title == null)
@@ -32,37 +34,38 @@ public class BlogController {
             if (blogs.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            return new ResponseEntity<>(blogs, HttpStatus.OK);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse(true, blogs));
         }catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/blog/{id}")
-    public ResponseEntity<Blog> getBlogById(@PathVariable("id") long id) {
+    public ResponseEntity<ApiResponse> getBlogById(@PathVariable("id") long id) {
         Optional<Blog> blogData = blogRepository.findById(id);
-        return blogData.map(blog -> new ResponseEntity<>(blog, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, blogData.map(blog -> new ResponseEntity<>(blog, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND))));
     }
     @PostMapping("")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<Blog> createBlog(@RequestBody Blog blog) {
+    public ResponseEntity<ApiResponse> createBlog(@RequestBody Blog blog) {
         try {
             Blog _blog = blogRepository.save(new Blog(blog.getTitle(), blog.getDescription(), false));
-            return new ResponseEntity<>(_blog, HttpStatus.CREATED);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse(true, _blog));
+
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     @PutMapping("/blog/{id}")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<Blog> updateBlog(@PathVariable("id") long id, @RequestBody Blog blog) {
+    public ResponseEntity<ApiResponse> updateBlog(@PathVariable("id") long id, @RequestBody Blog blog) {
         Optional<Blog> blogData = blogRepository.findById(id);
         if(blogData.isPresent()) {
             Blog _blog = blogData.get();
             _blog.setTitle(blog.getTitle());
             _blog.setDescription(blog.getDescription());
             _blog.setPublished(blog.isPublished());
-            return new ResponseEntity<>(blogRepository.save(_blog), HttpStatus.OK);
+            return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, blogRepository.save(_blog)));
         }else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
