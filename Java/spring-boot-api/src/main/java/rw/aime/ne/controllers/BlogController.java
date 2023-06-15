@@ -17,12 +17,12 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/blogs")
+@RequestMapping("/api/v1")
 public class BlogController {
     @Autowired
     BlogRepository blogRepository;
 
-    @GetMapping("")
+    @GetMapping("/blogs")
     public ResponseEntity<ApiResponse> getAllBlogs(@RequestParam(required = false) String title) {
         try {
             List<Blog> blogs = new ArrayList<Blog>();
@@ -45,7 +45,7 @@ public class BlogController {
         Optional<Blog> blogData = blogRepository.findById(id);
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, blogData.map(blog -> new ResponseEntity<>(blog, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND))));
     }
-    @PostMapping("")
+    @PostMapping("/blogs")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<ApiResponse> createBlog(@RequestBody Blog blog) {
         try {
@@ -81,7 +81,7 @@ public class BlogController {
         }
     }
 
-    @DeleteMapping("")
+    @DeleteMapping("/blogs")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<HttpStatus> deleteAllBlogs(@PathVariable("id") long id) {
         try {
