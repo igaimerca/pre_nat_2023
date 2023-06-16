@@ -1,1 +1,2 @@
-# Curated useful boilerplates for N.E
+# Starter codebase for N.E 2023
+ 
