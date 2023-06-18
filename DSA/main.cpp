@@ -7,8 +7,6 @@
 #include <bits/stdc++.h>
 #include <vector>
 
-// To work with MySQL, refer to https://learn.microsoft.com/en-us/azure/mysql/single-server/connect-cpp
-
 using namespace std;
 
 void returnNotSupportedError(string command)
